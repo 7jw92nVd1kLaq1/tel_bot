@@ -18,18 +18,17 @@ def index(request):
     try:
         js = request.read().decode()
         logger.info('\n{}\n'.format(js))
-        logger.info("Successfully turned into json object")
-        
         js = json.loads(js)
+
         update = telegram.Update.de_json(js, bot)
-        chat_id = update.message.chat.id
-        msg_id = update.message.message_id
+        #chat_id = update.message.chat.id
+        #msg_id = update.message.message_id
 
         logger.info("Successfully turned into telegram object")
-        logger.info("Message Successfully Received from {}.{}".format(chat_id, msg_id))
 
         bot_welcome = "Accepted"
-        bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
+        update.message.reply_text(bot_welcome)
+        #bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
         #bot.send_animation(chat_id, PHOTO, caption='LMAOOOO')
 
         logger.info("Successfully turned into sent object")
