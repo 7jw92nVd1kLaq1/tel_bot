@@ -27,8 +27,7 @@ def index(request):
         logger.info("Successfully turned into telegram object")
 
         bot_welcome = "Accepted"
-        update.message.reply_text(bot_welcome)
-        #bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
+        update.message.reply_text(bot_welcome, quote=True)
         #bot.send_animation(chat_id, PHOTO, caption='LMAOOOO')
 
         logger.info("Successfully turned into sent object")
